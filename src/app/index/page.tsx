@@ -1,3 +1,5 @@
+"use client";
+
 import { BookOpen } from 'lucide-react';
 
 export default function IndexPage() {
