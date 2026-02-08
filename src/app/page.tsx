@@ -1,27 +1,13 @@
-"use client";
+import { BookOpen } from 'lucide-react';
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { Loader2 } from 'lucide-react';
-import { useSettings } from '@/hooks/use-settings';
-
-export default function HomePage() {
-  const router = useRouter();
-  const { lastRead, isLoaded } = useSettings();
-
-  useEffect(() => {
-    if (isLoaded) {
-      if (lastRead) {
-        router.replace(`/read/${lastRead.book}/${lastRead.chapter}`);
-      } else {
-        router.replace('/index');
-      }
-    }
-  }, [isLoaded, lastRead, router]);
-
+export default function IndexPage() {
   return (
-    <div className="flex h-[calc(100vh-10rem)] items-center justify-center">
-      <Loader2 className="h-10 w-10 animate-spin text-primary" />
+    <div className="flex flex-col items-center justify-center h-[calc(100vh-10rem)] text-center">
+      <BookOpen className="h-16 w-16 text-primary mb-4" />
+      <h1 className="text-xl font-bold mb-2">Welcome to the Tenglish Bible</h1>
+      <p className="text-muted-foreground text-sm">
+        Select a book and chapter from the sidebar to start reading.
+      </p>
     </div>
   );
 }
